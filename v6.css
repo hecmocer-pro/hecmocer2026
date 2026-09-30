@@ -1,7 +1,7 @@
 /* V6: viewport-sized composition with room for touch targets and card motion. */
 @font-face {
   font-family: Balatro;
-  src: url('../assets/fonts/beleren/balatro.otf.woff2') format('woff2');
+  src: url('assets/fonts/beleren/balatro.otf.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -473,7 +473,7 @@ html[lang="en"] .stat-es {
 /* Full-art planeswalker: translucent panels, fully opaque readable lettering. */
 .planeswalker-frame {
   padding: 8px;
-  background: linear-gradient(#091b2522, #091b2544), url('../assets/mtg-background-v7.webp') center/cover, #526957;
+  background: linear-gradient(#091b2522, #091b2544), url('assets/mtg-background-v7.webp') center/cover, #526957;
 }
 
 .planeswalker-heading,
@@ -679,7 +679,7 @@ html[lang="en"] .stat-es {
   border: 0;
   box-shadow: none;
   border-radius: 50% 50% 42% 42%;
-  background: url("../assets/hearthstone-background.avif") center / cover no-repeat;
+  background: url("assets/hearthstone-background.avif") center / cover no-repeat;
   background-size: 120%;
   background-position: 20% 10%;
 }

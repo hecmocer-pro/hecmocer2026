@@ -14,14 +14,14 @@
     return `<${tag} data-year-base="${base}">${value}</${tag}>`;
   });
   front.innerHTML = fut;
-  const pokemonPortrait = '<span class="tcg-art"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>';
-  const mtgPortrait = '<span class="tcg-art"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>';
+  const pokemonPortrait = '<span class="tcg-art"><img src="assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>';
+  const mtgPortrait = '<span class="tcg-art"><img src="assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>';
   const formats = {
     fut: { name: 'FUT · Legendaria', markup: fut },
     mtg: {
       name: 'Magic: The Gathering',
       markup: `<span class="planeswalker-frame">
-        <span class="planeswalker-heading"><b>Héctor, Team Lead</b><span class="mana" role="img" aria-label="Coste: un maná blanco, uno azul, uno rojo y uno verde"><img src="../AI inspiration/W.svg" alt="" title="Llanura" /><img src="../AI inspiration/U.svg" alt="" title="Isla" /><img src="../AI inspiration/R.svg" alt="" title="Montaña" /><img src="../AI inspiration/G.svg" alt="" title="Bosque" /></span></span>
+        <span class="planeswalker-heading"><b>Héctor, Team Lead</b><span class="mana" role="img" aria-label="Coste: un maná blanco, uno azul, uno rojo y uno verde"><img src="AI inspiration/W.svg" alt="" title="Llanura" /><img src="AI inspiration/U.svg" alt="" title="Isla" /><img src="AI inspiration/R.svg" alt="" title="Montaña" /><img src="AI inspiration/G.svg" alt="" title="Bosque" /></span></span>
         ${mtgPortrait}
         <span class="planeswalker-type">Planeswalker Legendario — Developer <span>◆</span></span>
         <span class="planeswalker-abilities"><span><b><span>+1</span></b><span>Crea una ficha de idea. Tus aliados obtienen +1/+1 hasta el final del turno.</span></span><span><b><span>−2</span></b><span>Convierte una idea en un proyecto y roba una carta.</span></span><span><b><span>−7</span></b><span>Obtienes un emblema con «Al principio del turno, roba una carta por cada idea que controles».</span></span></span>
@@ -31,20 +31,20 @@
     pokemon: {
       name: 'Pokémon',
       markup: `<span class="tcg-frame pokemon-frame">
-        <span class="tcg-heading"><span class="pokemon-name"><small>BÁSICO</small><b>Hecmocer <em class="pokemon-ex">EX</em></b></span><span class="pokemon-hp"><span class="pokemon-hp-label">PS</span><b>180</b><img src="../assets/pkm-electric.png" alt="Eléctrico" /></span></span>
+        <span class="tcg-heading"><span class="pokemon-name"><small>BÁSICO</small><b>Hecmocer <em class="pokemon-ex">EX</em></b></span><span class="pokemon-hp"><span class="pokemon-hp-label">PS</span><b>180</b><img src="assets/pkm-electric.png" alt="Eléctrico" /></span></span>
         ${pokemonPortrait}
         <span class="tcg-type">N.º ${cardNumber} · Pokémon Creador · Tipo Eléctrico</span>
-        <span class="tcg-rules"><span class="pokemon-ability"><span class="pokemon-ability-title"><span class="ability-label">Habilidad</span><b>Espíritu de equipo</b></span><span>Potencia el talento de todos los compañeros de tu equipo.</span></span><span class="pokemon-attack"><span class="pokemon-energy" role="img" aria-label="Dos energías eléctricas"><img src="../assets/pkm-electric.png" alt="" /><img src="../assets/pkm-electric.png" alt="" /></span><b>Chispa creativa</b><strong>120</strong></span></span>
-        <span class="pokemon-traits"><span>debilidad <img class="pokemon-energy-icon" src="../assets/pkm-dragon.png" alt="Dragón" /> ×2</span><span>retirada <img class="pokemon-energy-icon pokemon-neutral" src="../assets/pkm-normal.webp" alt="Incolora" /></span></span>
+        <span class="tcg-rules"><span class="pokemon-ability"><span class="pokemon-ability-title"><span class="ability-label">Habilidad</span><b>Espíritu de equipo</b></span><span>Potencia el talento de todos los compañeros de tu equipo.</span></span><span class="pokemon-attack"><span class="pokemon-energy" role="img" aria-label="Dos energías eléctricas"><img src="assets/pkm-electric.png" alt="" /><img src="assets/pkm-electric.png" alt="" /></span><b>Chispa creativa</b><strong>120</strong></span></span>
+        <span class="pokemon-traits"><span>debilidad <img class="pokemon-energy-icon" src="assets/pkm-dragon.png" alt="Dragón" /> ×2</span><span>retirada <img class="pokemon-energy-icon pokemon-neutral" src="assets/pkm-normal.webp" alt="Incolora" /></span></span>
         <span class="pokemon-ex-rule"><b>regla ex</b><span>Si tu Pokémon ex queda Fuera de Combate, tu rival obtiene 2 puntos.</span></span>
         <span class="tcg-footer"><span>HMC · EDICIÓN PERSONAL</span><b>${cardNumber} / 099 ✦</b></span>
       </span>`
     },
     hearthstone: {
       name: 'Hearthstone',
-      markup: `<span class="hs-frame"><img class="hs-overlay" src="../AI inspiration/hearthstone-card-2.png" alt="" decoding="async" />
+      markup: `<span class="hs-frame"><img class="hs-overlay" src="AI inspiration/hearthstone-card-2.png" alt="" decoding="async" />
         <span class="hs-mana" aria-label="Coste de maná: 6">6</span>
-        <span class="hs-portrait"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>
+        <span class="hs-portrait"><img src="assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>
         <svg class="hs-name" viewBox="0 0 320 449" aria-label="Héctor, Team Lead" role="img">
           <defs><path id="hs-name-curve" d="M 48,268 C 116,257 195,240 263,257" /></defs>
           <text><textPath href="#hs-name-curve" startOffset="50%" text-anchor="middle">Héctor, Team Lead</textPath></text>
@@ -57,13 +57,13 @@
       </span>`
     },
     poker: {
-      name: 'Póker · Rey de picas',
+      name: 'Póker · Rey de corazones',
       markup: `<span class="poker-frame">
-        <span class="poker-index"><b>K</b><span>♠</span></span>
-        <span class="poker-index poker-index-bottom" aria-hidden="true"><b>K</b><span>♠</span></span>
+        <span class="poker-index"><b>K</b><span>♥</span></span>
+        <span class="poker-index poker-index-bottom" aria-hidden="true"><b>K</b><span>♥</span></span>
         <span class="poker-court">
-          <span class="poker-half"><span class="poker-crown" aria-hidden="true">♛</span><img src="../assets/profile-v7.webp" alt="Retrato del rey de picas" decoding="async" /><span class="poker-suit" aria-hidden="true">♠</span></span>
-          <span class="poker-half poker-reflection" aria-hidden="true"><span class="poker-crown">♛</span><img src="../assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">♠</span></span>
+          <span class="poker-half"><span class="poker-crown" aria-hidden="true">♛</span><img src="assets/profile-v7.webp" alt="Retrato del rey de corazones" decoding="async" /><span class="poker-suit" aria-hidden="true">♥</span></span>
+          <span class="poker-half poker-reflection" aria-hidden="true"><span class="poker-crown">♛</span><img src="assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">♥</span></span>
           <span class="poker-ribbon">REY DE CÓDIGO</span>
         </span>
       </span>`
@@ -72,7 +72,7 @@
       name: 'Balatro · Joker',
       markup: `<span class="balatro-frame">
         <span class="joker-word joker-left" aria-hidden="true">JOKER</span>
-        <span class="balatro-photo"><img src="../assets/profile-v7.webp" alt="Retrato de Héctor pixelado" decoding="async" hidden /><canvas width="78" height="102" aria-hidden="true"></canvas></span>
+        <span class="balatro-photo"><img src="assets/profile-v7.webp" alt="Retrato de Héctor pixelado" decoding="async" hidden /><canvas width="78" height="102" aria-hidden="true"></canvas></span>
         <span class="joker-word joker-right" aria-hidden="true">JOKER</span>
       </span>`
     }
@@ -155,7 +155,7 @@
   function updateCard(value) {
     card.dataset.format = value;
     front.innerHTML = formats[value].markup;
-    card.setAttribute('aria-label', value === 'poker' ? 'Carta de póker · Rey de picas' : `Carta de perfil de Héctor Moreno Cervera · ${formats[value].name}`);
+    card.setAttribute('aria-label', value === 'poker' ? 'Carta de póker · Rey de corazones' : `Carta de perfil de Héctor Moreno Cervera · ${formats[value].name}`);
     if (status) status.textContent = `${formats[value].name} · Edición personal`;
     document.dispatchEvent(new Event('cardformatchange'));
   }
