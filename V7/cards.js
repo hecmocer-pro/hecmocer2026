@@ -79,7 +79,6 @@
   };
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const mobileLayout = window.matchMedia('(max-width: 580px)');
   const status = document.querySelector('#formatStatus');
   const swipeHint = document.querySelector('#swipeHint');
   let selectedIndex = 0;
@@ -104,7 +103,7 @@
       const bounds = button.getBoundingClientRect();
       const start = clamp(highlight.left - bounds.left, 0, bounds.width);
       const end = clamp(highlight.right - bounds.left, 0, bounds.width);
-      button.style.backgroundImage = `linear-gradient(to right, #fff ${start}px, #162018 ${start}px ${end}px, #fff ${end}px)`;
+      button.style.backgroundImage = `linear-gradient(to right, #bfc8c2 ${start}px, #162018 ${start}px ${end}px, #bfc8c2 ${end}px)`;
       button.style.backgroundClip = 'text';
       button.style.webkitBackgroundClip = 'text';
       button.style.color = 'transparent';
@@ -117,7 +116,7 @@
   }
 
   function scheduleSelectorText() {
-    if (mobileLayout.matches || !window.requestAnimationFrame) return;
+    if (!window.requestAnimationFrame) return;
     highlightUntil = performance.now() + 550;
     if (!highlightFrame) highlightFrame = window.requestAnimationFrame(trackSelectorText);
   }
@@ -363,18 +362,6 @@
     buttonGeometry = undefined;
     stageWidth = undefined;
     moveIndicator(selectedIndex);
-  });
-  mobileLayout.addEventListener('change', () => {
-    if (mobileLayout.matches) {
-      if (highlightFrame) window.cancelAnimationFrame(highlightFrame);
-      highlightFrame = 0;
-      buttons.forEach(button => {
-        button.style.backgroundImage = '';
-        button.style.backgroundClip = '';
-        button.style.webkitBackgroundClip = '';
-        button.style.color = '';
-      });
-    } else scheduleSelectorText();
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) hideHint();

@@ -228,7 +228,6 @@ html[lang="en"] .stat-es {
   color: #bfc8c2;
   font: 700 clamp(10px, 2.7vw, 12px)/1 "Segoe UI", sans-serif;
   cursor: pointer;
-  transition: color .25s ease;
 }
 
 .card-selector button[aria-pressed="true"] {
