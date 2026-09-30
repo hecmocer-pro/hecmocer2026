@@ -1,0 +1,1280 @@
+/* V4 card artwork. Shared assets remain untouched. */
+@font-face {
+  font-family: "Beleren Bold";
+  src: url('../assets/fonts/beleren/Beleren2016-Bold.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Beleren SmallCaps Bold";
+  src: url('../assets/fonts/beleren/Beleren2016SmallCaps-Bold.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN";
+  src: url('../assets/fonts/d-din/D-DIN.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN";
+  src: url('../assets/fonts/d-din/D-DIN-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+.player-card[data-format="fut"] {
+  font-family: "D-DIN", Arial, sans-serif;
+}
+
+.player-card[data-format="fut"] .player-rating>strong,
+.player-card[data-format="fut"] .player-name,
+.player-card[data-format="fut"] .back-monogram {
+  font-family: "D-DIN", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.player-card {
+  display: block;
+  position: relative;
+  width: 320px;
+  height: 449px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  filter: drop-shadow(0 20px 15px #4d482826);
+  transform: rotate(-5deg);
+  transition: transform .35s
+}
+
+.player-card:hover {
+  transform: rotate(-2deg) translateY(-5px)
+}
+
+.card-rotator {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.2, .7, .2, 1)
+}
+
+.player-card.is-flipped .card-rotator {
+  transform: rotateY(180deg)
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  clip-path: var(--card-shape);
+  background: linear-gradient(120deg, #ab762c, #f7e5a0 22%, #b98731 42%, #fff2bc 72%, #976520);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  color: #473617
+}
+
+.card-inner {
+  position: absolute;
+  inset: 3px;
+  clip-path: var(--card-shape);
+  background: repeating-linear-gradient(125deg, transparent 0 37px, #fff5c518 38px 39px, transparent 40px 68px), conic-gradient(from 35deg at 70% 25%, #f4df9b, #caa551, #f1d892, #eed8a0, #c59a46, #f4df9b);
+  overflow: hidden
+}
+
+.card-inner:after {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  clip-path: var(--card-shape);
+  border-top: 1px solid #fff0b2;
+  pointer-events: none
+}
+
+.card-edition {
+  position: absolute;
+  top: 27px;
+  left: 37px;
+  right: 34px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px
+}
+
+.card-edition>span {
+  font-size: 7px;
+  letter-spacing: 2px
+}
+
+.player-rating {
+  position: absolute;
+  top: 65px;
+  left: 35px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column
+}
+
+.player-rating>strong {
+  font-family: Impact, "Arial Narrow", sans-serif;
+  font-size: 62px;
+  line-height: 1;
+  font-weight: 400
+}
+
+.player-rating>span {
+  font-size: 21px;
+  line-height: 1.2
+}
+
+.spain-flag {
+  display: block;
+  width: 27px;
+  height: 18px;
+  background: linear-gradient(#a53631 25%, #f6ce62 25% 75%, #a53631 75%);
+  margin-top: 14px
+}
+
+.player-rating .club-mark {
+  font: 700 32px Georgia, serif;
+  margin-top: 9px;
+  border-top: 1px solid #86622766;
+  padding: 4px 8px
+}
+
+.portrait {
+  position: absolute;
+  top: 46px;
+  left: 72px;
+  width: 241px;
+  height: 284px;
+  object-fit: cover;
+  object-position: center top;
+  mix-blend-mode: multiply;
+  mask-image: linear-gradient(#000 76%, transparent 100%);
+  -webkit-mask-image: linear-gradient(#000 76%, transparent 100%)
+}
+
+.player-info {
+  position: absolute;
+  left: 31px;
+  right: 31px;
+  top: 271px;
+  text-align: center
+}
+
+.player-name {
+  display: block;
+  font-family: Impact, "Arial Narrow", sans-serif;
+  font-size: 33px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.1
+}
+
+.player-surname {
+  display: block;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 2.6px;
+  margin-top: 4px
+}
+
+.player-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px 6px;
+  border-top: 1px solid #8d692766;
+  border-bottom: 1px solid #8d692766;
+  padding: 12px 0;
+  margin: 11px 0 10px;
+  font-size: 12px
+}
+
+.player-stats>span {
+  white-space: nowrap
+}
+
+.player-stats b {
+  font-size: 20px;
+  margin-right: 3px;
+  font-weight: 650
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  font-size: 10px;
+  align-items: center
+}
+
+.card-bottom>span {
+  font-size: 6px;
+  font-weight: 650;
+  letter-spacing: .9px
+}
+
+.card-back {
+  transform: rotateY(180deg)
+}
+
+.back-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 39px 33px
+}
+
+.back-kicker {
+  font-size: 8px;
+  letter-spacing: 1.7px
+}
+
+.back-monogram {
+  font: bold 54px Georgia, serif;
+  line-height: 1.2
+}
+
+.back-name {
+  font-size: 23px;
+  font-weight: 650;
+  line-height: 1.1;
+  margin: 5px 0 18px
+}
+
+.back-detail {
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 9px 0;
+  border-top: 1px solid #8d692744;
+  width: 100%
+}
+
+.back-detail b {
+  display: block;
+  font-size: 12px
+}
+
+.back-footer {
+  font-size: 6px;
+  letter-spacing: 1px;
+  margin-top: 17px
+}
+
+/* All formats use the existing 320 × 449 stage and its mobile scaling. */
+.player-card.is-changing-format .card-rotator {
+  transition: none;
+}
+
+.player-card:not([data-format="fut"]) .card-face {
+  clip-path: none;
+  border-radius: 15px;
+  background: var(--tcg-edge);
+  border: 7px solid var(--tcg-edge);
+  color: #26231f;
+  overflow: hidden;
+  text-align: left;
+}
+
+.player-card[data-format="mtg"] {
+  --tcg-edge: #222621;
+  --tcg-paper: #e0e5cc;
+  --tcg-accent: #476b65;
+}
+
+.player-card[data-format="pokemon"] {
+  --tcg-edge: #f5d447;
+  --tcg-paper: #fff3a9;
+  --tcg-accent: #b78926;
+}
+
+.tcg-frame {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 9px;
+  background: repeating-linear-gradient(125deg, #ffffff16 0 2px, transparent 2px 7px), linear-gradient(130deg, var(--tcg-paper), var(--tcg-accent));
+}
+
+.tcg-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  min-height: 31px;
+  font-family: Georgia, serif;
+  font-size: 14px;
+}
+
+.tcg-heading>b {
+  min-width: 0;
+}
+
+.mana {
+  white-space: nowrap;
+  color: #20564b;
+  font-size: 17px;
+}
+
+.tcg-art {
+  display: block;
+  position: relative;
+  flex: 0 0 178px;
+  overflow: hidden;
+  border: 3px solid var(--tcg-accent);
+  background: radial-gradient(ellipse at 50% 95%, #d3dfb9, transparent 65%), repeating-linear-gradient(130deg, transparent 0 28px, #ffffff12 29px 30px), linear-gradient(145deg, #172f3a, #589c8f);
+}
+
+.tcg-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.tcg-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 27px;
+  padding: 4px 6px;
+  background: var(--tcg-paper);
+  border: 1px solid var(--tcg-accent);
+  font: bold 11px Georgia, serif;
+}
+
+.tcg-rules {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background: var(--tcg-paper);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.tcg-rules em {
+  border-top: 1px solid #52634544;
+  padding-top: 7px;
+  font: italic 11px Georgia, serif;
+}
+
+.tcg-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 24px;
+  gap: 5px;
+  font-size: 6px;
+  letter-spacing: .5px;
+}
+
+.tcg-footer>b {
+  font-size: 13px;
+}
+
+[data-format="mtg"] .tcg-heading {
+  border-radius: 8px 8px 0 0;
+  background: #dce1ce;
+  padding: 0 5px;
+  border: 1px solid #526d61;
+}
+
+[data-format="mtg"] .tcg-footer>b {
+  border: 1px solid #476b65;
+  border-radius: 5px;
+  padding: 2px 10px;
+  background: #e0e5cc;
+}
+
+[data-format="pokemon"] .tcg-heading {
+  min-height: 39px;
+  flex: 0 0 39px;
+  padding: 0 2px 2px;
+  font-family: Arial, sans-serif;
+  color: #111b26;
+}
+
+[data-format="pokemon"] .pokemon-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+[data-format="pokemon"] .tcg-heading small {
+  padding: 2px 4px;
+  border: 1px solid #778996;
+  border-radius: 3px;
+  background: linear-gradient(#fff, #cbdce7);
+  box-shadow: 0 1px 2px #172d4a70;
+  font-size: 7px;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1;
+}
+
+[data-format="pokemon"] .pokemon-name>b {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -.9px;
+}
+
+[data-format="pokemon"] .pokemon-ex {
+  display: inline-block;
+  margin-left: -2px;
+  font: italic 1000 22px/.8 Arial, sans-serif;
+  letter-spacing: -3px;
+  text-transform: lowercase;
+  transform: skew(-13deg) rotate(-5deg) translateY(1px);
+  color: #ffe339;
+  -webkit-text-stroke: 1.3px #172732;
+  paint-order: stroke fill;
+  text-shadow: 1px 1px 0 #fff, 2px 2px 0 #172732, 3px 3px 0 #fff4a2;
+}
+
+.pokemon-hp {
+  display: inline-flex;
+  align-items: baseline;
+  align-self: stretch;
+  gap: 2px;
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.pokemon-hp b {
+  line-height: 1;
+  font-size: 23px;
+  transform: translateY(6px);
+}
+
+.pokemon-hp-label {
+  transform: translateY(6px);
+  font-weight: 600;
+}
+
+.pokemon-hp img {
+  display: block;
+  align-self: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  object-fit: contain;
+}
+
+[data-format="pokemon"] .tcg-art {
+  flex: 0 0 181px;
+  border: 3px solid #fff3ac;
+  box-shadow: 0 0 0 2px #b78926, inset 0 0 16px #fff4a2;
+  background: #f8d849;
+}
+
+[data-format="pokemon"] .tcg-art::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  background: url('../assets/pkm-background-v7.webp') center / cover;
+  filter: blur(2px) sepia(0.6) saturate(2) hue-rotate(345deg);
+  transform: scale(1.04);
+}
+
+[data-format="pokemon"] .tcg-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  object-position: center 10%;
+  filter: drop-shadow(0 0 5px #f5ebad);
+}
+
+[data-format="pokemon"] .tcg-type {
+  flex: 0 0 18px;
+  min-height: 18px;
+  margin: 2px 7px 0;
+  border: 1px solid #a87920;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(90deg, #f7df73, #fff8ba, #edc847);
+  color: #66471c;
+  font: italic 7px Arial, sans-serif;
+  justify-content: center;
+}
+
+[data-format="pokemon"] .tcg-rules {
+  min-height: 0;
+  gap: 7px;
+  padding: 11px 8px 4px;
+  background: none;
+  color: #112337;
+  font: 10px/1.18 Arial, sans-serif;
+}
+
+[data-format="pokemon"] .tcg-frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 7px 8px 3px;
+  background: radial-gradient(ellipse at 25% 58%, #fff9c6, transparent 36%), radial-gradient(ellipse at 95% 80%, #ffe981, transparent 38%), linear-gradient(145deg, #f9db51 1%, #f2bd39 36%, #fff5a3 60%, #dc9f24 100%);
+}
+
+[data-format="pokemon"] .tcg-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .45;
+  background: repeating-linear-gradient(116deg, transparent 0 17px, #ffffff30 18px 19px, transparent 20px 45px), radial-gradient(circle at 10% 34%, #fff 0 2px, transparent 3px), radial-gradient(circle at 91% 14%, #fff 0 2px, transparent 3px);
+}
+
+[data-format="pokemon"] .card-face {
+  border-color: #f4d442;
+  box-shadow: inset 0 0 0 2px #fcfbda;
+}
+
+[data-format="pokemon"] .pokemon-ability-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+[data-format="pokemon"] .pokemon-ability-title b {
+  font-size: 13px;
+  letter-spacing: -.3px;
+}
+
+.ability-label {
+  display: inline-block;
+  border-radius: 8px;
+  background: #a32d36;
+  padding: 1px 7px;
+  color: #fff;
+  font-size: 8px;
+}
+
+[data-format="pokemon"] .ability-label {
+  padding: 2px 9px 1px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  background: linear-gradient(#e94456, #9f142a);
+  box-shadow: 0 1px 2px #2539688c;
+  font: italic 900 9px/1 Arial, sans-serif;
+  letter-spacing: .4px;
+}
+
+.tcg-rules>span>span:last-child:not(:first-child) {
+  margin-top: 3px;
+}
+
+[data-format="pokemon"] .tcg-rules>span:first-child>span:last-child {
+  display: block;
+}
+
+.pokemon-attack {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.pokemon-attack strong {
+  margin-left: auto;
+  font-size: 18px;
+}
+
+.pokemon-energy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  flex: 0 0 auto;
+}
+
+.pokemon-energy img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+[data-format="pokemon"] .pokemon-attack-text {
+  margin-left: 55px;
+  font-size: 9px;
+}
+
+.pokemon-traits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0 0 23px;
+  margin: 0 3px;
+  padding: 2px 9px;
+  border: 1px solid #96c4d8;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e5f4f7dd, #fefbe0e8, #d6eff2df);
+  color: #254453;
+  font: 8px Arial, sans-serif;
+}
+
+.pokemon-traits>span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pokemon-traits .pokemon-energy-icon {
+  display: block;
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+}
+
+.pokemon-traits .pokemon-neutral {
+  width: 15px;
+  height: 15px;
+}
+
+.pokemon-ex-rule {
+  display: flex;
+  align-items: center;
+  flex: 0 0 25px;
+  margin: 3px 1px 0;
+  padding: 2px 8px;
+  gap: 7px;
+  border: 1px solid #6a8c8f;
+  clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+  background: linear-gradient(110deg, #fff460, #f8c920 30%, #f9ed78 59%, #f8d72b);
+  box-shadow: inset 0 1px #fff;
+  color: #251e18;
+  font: 8px/1.1 Arial, sans-serif;
+}
+
+.pokemon-ex-rule b {
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-style: italic;
+}
+
+[data-format="pokemon"] .tcg-footer {
+  flex: 0 0 12px;
+  min-height: 12px;
+  padding: 0 4px;
+  color: #22426c;
+  font-size: 6px;
+}
+
+[data-format="pokemon"] .tcg-footer>b {
+  font-size: 7px;
+}
+
+.player-card:not([data-format="fut"]) .back-inner {
+  inset: 0;
+  clip-path: none;
+  background: radial-gradient(ellipse at top, #ffffff55, transparent 70%), linear-gradient(145deg, var(--tcg-paper), var(--tcg-accent));
+  padding: 28px 25px;
+  text-align: center;
+}
+
+.player-card:not([data-format="fut"]) .card-inner:after {
+  clip-path: none;
+  border: 1px solid #ffffff60;
+  border-radius: 8px;
+}
+
+.player-card:not([data-format="fut"]) .back-detail {
+  border-color: #26231f33;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .player-card,
+  .card-rotator {
+    transition: none;
+  }
+}
+
+/* Hearthstone: sculpted frame, oval portrait and oversized resource gems. */
+.player-card[data-format="hearthstone"] {
+  --tcg-edge: #584536;
+  --tcg-paper: #ead7b0;
+  --tcg-accent: #9c8158;
+}
+
+.player-card[data-format="hearthstone"] .card-face {
+  border-radius: 90px 90px 30px 30px;
+  border-width: 5px;
+}
+
+.hs-frame {
+  display: block;
+  position: relative;
+  height: 100%;
+  background: repeating-linear-gradient(115deg, #fff2 0 1px, transparent 1px 13px), linear-gradient(100deg, #786855, #b7a58a 45%, #655847);
+  box-shadow: inset 0 0 0 5px #c3a572, inset 0 0 18px 10px #352922;
+}
+
+.hs-portrait {
+  position: absolute;
+  top: 13px;
+  left: 40px;
+  width: 230px;
+  height: 220px;
+  overflow: hidden;
+  border: 9px ridge #b09b72;
+  border-radius: 50% 50% 44% 44%;
+  background: radial-gradient(ellipse at center, #72c9da, #274955 70%);
+  box-shadow: 0 3px 8px #201c19;
+}
+
+.hs-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.hs-name {
+  position: absolute;
+  top: 204px;
+  left: 15px;
+  right: 15px;
+  padding: 13px 4px;
+  background: linear-gradient(#b6a178, #65533b);
+  border: 3px ridge #d3b87e;
+  border-radius: 5px 5px 45% 45%;
+  font: bold 18px Georgia, serif;
+  text-shadow: 1px 2px #34261a;
+  color: #fff4d3;
+  text-align: center;
+  z-index: 2;
+}
+
+.hs-gem {
+  position: absolute;
+  top: 248px;
+  left: 143px;
+  color: #ffab25;
+  text-shadow: 0 2px #6a310a;
+  z-index: 2;
+  font-size: 25px;
+}
+
+.hs-rules {
+  position: absolute;
+  top: 253px;
+  left: 32px;
+  right: 32px;
+  bottom: 45px;
+  padding: 27px 15px 10px;
+  border: 4px ridge #ad9363;
+  border-radius: 10px 10px 35% 35%;
+  background: radial-gradient(ellipse at top, #fff0ca, #c8ab7d);
+  font: 14px/1.35 Georgia, serif;
+  text-align: center;
+}
+
+.hs-rules em {
+  display: block;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.hs-tribe {
+  position: absolute;
+  bottom: 34px;
+  left: 70px;
+  right: 70px;
+  padding: 5px;
+  text-align: center;
+  font: bold 9px Georgia, serif;
+  background: #c5b693;
+  border: 2px ridge #9d865e;
+}
+
+.hs-mana,
+.hs-attack,
+.hs-health {
+  position: absolute;
+  z-index: 3;
+  width: 58px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  font: bold 45px Georgia, serif;
+  color: #fff;
+  -webkit-text-stroke: 1px #352923;
+  text-shadow: 2px 3px #30261e;
+  border: 4px ridge #bba573;
+  box-shadow: 1px 3px 4px #33261b;
+}
+
+.hs-mana {
+  top: 18px;
+  left: 5px;
+  border-radius: 45% 45% 50% 50%;
+  background: radial-gradient(at 35% 25%, #a5e8ff, #2161ba 55%, #153269);
+}
+
+.hs-attack {
+  bottom: 17px;
+  left: 8px;
+  border-radius: 50%;
+  background: radial-gradient(at 35% 25%, #fffbb5, #dba927 60%, #9b6421);
+}
+
+.hs-health {
+  bottom: 17px;
+  right: 8px;
+  border-radius: 50% 50% 50% 15%;
+  background: radial-gradient(at 35% 25%, #ff9a76, #b72e25 60%, #691d25);
+}
+
+.hs-edition {
+  position: absolute;
+  bottom: 13px;
+  width: 100%;
+  text-align: center;
+  font-size: 6px;
+  letter-spacing: 1px;
+  color: #fff0d3;
+}
+
+.player-card[data-format="hearthstone"] .back-inner {
+  padding-top: 48px;
+}
+
+/* Poker: mirrored court portrait and diagonally opposed indices. */
+.player-card[data-format="poker"] {
+  --tcg-edge: #e8e3d7;
+  --tcg-paper: #fffcf2;
+  --tcg-accent: #d0bd8f;
+}
+
+.poker-frame {
+  display: block;
+  position: relative;
+  height: 100%;
+  background: #fffcf2;
+  color: #232c36;
+}
+
+.poker-index {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 30px/1 Georgia, serif;
+}
+
+.poker-index b {
+  font-weight: 400;
+}
+
+.poker-index>span {
+  font-size: 32px;
+}
+
+.poker-index-bottom {
+  top: auto;
+  left: auto;
+  bottom: 9px;
+  right: 9px;
+  transform: rotate(180deg);
+}
+
+.poker-court {
+  position: absolute;
+  top: 39px;
+  bottom: 39px;
+  left: 44px;
+  right: 44px;
+  border: 2px solid #b59b60;
+  outline: 1px solid #b59b60;
+  outline-offset: 4px;
+  overflow: hidden;
+}
+
+.poker-half {
+  display: block;
+  position: relative;
+  height: 50%;
+  overflow: hidden;
+  background: repeating-conic-gradient(#243e51 0% 25%, #dbc58e 0% 50%) 0 0 / 28px 28px;
+}
+
+.poker-half img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: -5px 12%;
+  filter: sepia(.5) saturate(.7) contrast(1.1);
+}
+
+.poker-reflection {
+  transform: rotate(180deg);
+}
+
+.poker-crown {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 37px;
+  color: #f4ce67;
+  z-index: 1;
+  text-shadow: 1px 2px #23303c;
+}
+
+.poker-suit {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  color: #fff4cb;
+  font-size: 28px;
+  text-shadow: 1px 1px #23303c;
+}
+
+.poker-ribbon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  padding: 8px 0;
+  background: #233b4d;
+  border-block: 2px solid #d5ba76;
+  color: #fff3ca;
+  text-align: center;
+  font: bold 11px Georgia, serif;
+  letter-spacing: 1.6px;
+}
+
+.poker-caption {
+  position: absolute;
+  bottom: 15px;
+  left: 45px;
+  font-size: 7px;
+  letter-spacing: 1.1px;
+}
+
+.player-card[data-format="poker"] .back-inner {
+  background: linear-gradient(#fffcf2ee, #fffcf2ee), repeating-conic-gradient(#233b4d 0% 25%, #d5ba76 0% 50%) 0 0 / 16px 16px;
+}
+
+/* Balatro: a code-drawn pixel joker, paper stock and arcade scoring. */
+.player-card[data-format="balatro"] {
+  --tcg-edge: #ded9c9;
+  --tcg-paper: #ece9dc;
+  --tcg-accent: #8bb3aa;
+}
+
+.player-card[data-format="balatro"] .card-face {
+  border-radius: 10px;
+  border-width: 8px;
+}
+
+.balatro-frame {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  background: #eeeadd;
+  color: #27383c;
+  font-family: "Courier New", monospace;
+  box-shadow: inset 0 0 0 2px #b3b7a8;
+}
+
+.balatro-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px #c2c1b2;
+}
+
+.balatro-heading>span {
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.balatro-art {
+  display: block;
+  position: relative;
+  height: 198px;
+  flex-shrink: 0;
+  border: 4px solid #354f52;
+  background: repeating-conic-gradient(#70a598 0% 25%, #7eb1a2 0% 50%) 0 0 / 24px 24px;
+  box-shadow: 3px 3px #a6ac98;
+}
+
+.pixel-joker {
+  width: 100%;
+  height: 170px;
+  display: block;
+  filter: drop-shadow(4px 4px 0 #27474466);
+}
+
+.balatro-art-label {
+  display: block;
+  text-align: center;
+  background: #354f52;
+  color: #fff1cb;
+  padding: 5px 0;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.balatro-effect {
+  display: block;
+  flex: 1;
+  padding-top: 14px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.balatro-effect b {
+  color: #b72e37;
+}
+
+.balatro-effect>span {
+  display: block;
+  margin-top: 8px;
+}
+
+.balatro-effect strong {
+  background: #b72e37;
+  color: #fff;
+  padding: 1px 4px;
+  white-space: nowrap;
+}
+
+.balatro-rarity {
+  align-self: center;
+  padding: 4px 25px;
+  margin-top: 7px;
+  background: #356ea1;
+  color: #fff;
+  font-weight: bold;
+  font-size: 11px;
+  box-shadow: 2px 2px #224667;
+}
+
+.balatro-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 9px;
+  font-size: 7px;
+}
+
+.balatro-footer b {
+  font-size: 20px;
+  color: #846017;
+}
+
+.player-card[data-format="balatro"] .back-inner {
+  font-family: "Courier New", monospace;
+  background: repeating-linear-gradient(0deg, #ffffff0d 0 2px, transparent 2px 4px), linear-gradient(145deg, #e8eadc, #82b3a4);
+}
+
+.player-card[data-format="fut"] {
+  --card-shape: polygon(50% 0, 57% 4%, 63% 0, 69% 5%, 82% 2%, 97% 11%, 96% 77%, 91% 84%, 78% 88%, 67% 95%, 50% 100%, 33% 95%, 22% 88%, 9% 84%, 4% 77%, 3% 11%, 18% 2%, 31% 5%, 37% 0, 43% 4%)
+}
+
+.player-card[data-format="fut"] .card-face {
+  background: radial-gradient(circle at 50% 12%, #d9ffbd 0 2%, transparent 3%), radial-gradient(circle at 50% 42%, #8d29e4 0, transparent 38%), linear-gradient(145deg, #071b2d 8%, #153f43 44%, #1a082f 72%, #050611);
+  border: 2px solid #d9b7ff;
+  box-shadow: inset 0 0 0 3px #46177c, inset 0 0 22px #39d7c477, 0 0 18px #b840e688
+}
+
+.player-card[data-format="fut"] .card-inner {
+  background: radial-gradient(circle at 18% 30%, #ceff7a 0 1px, transparent 2px), radial-gradient(circle at 82% 20%, #e895ff 0 1px, transparent 2px), repeating-linear-gradient(125deg, transparent 0 28px, #8df3d426 29px 31px, transparent 32px 63px), conic-gradient(from 210deg at 50% 35%, #081a2c, #1d0751, #751cb0, #122c4b, #071a31);
+  background-size: auto, auto, auto, auto;
+  box-shadow: inset 0 0 0 2px #f0cfff, inset 0 0 34px #5f28b777
+}
+
+.player-card[data-format="fut"] .card-inner:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, transparent 20%, #fff8 21%, transparent 22% 43%, #b9ffff66 44%, transparent 45% 68%, #fff6 69%, transparent 70%);
+  mix-blend-mode: screen;
+  opacity: .65
+}
+
+.player-card[data-format="fut"] .card-inner:after {
+  inset: 9px;
+  border: 2px solid #efcfff;
+  border-top-color: #a8ffdd;
+  box-shadow: inset 0 0 0 2px #531e7c;
+}
+
+.player-card[data-format="fut"] .card-edition {
+  color: #eaffd8;
+  text-shadow: 0 0 6px #9bffbb
+}
+
+.player-card[data-format="fut"] .player-rating>strong,
+.player-card[data-format="fut"] .player-name {
+  color: #f4f6ff;
+  text-shadow: 2px 2px #52167f, 0 0 8px #b5ffcb
+}
+
+.player-card[data-format="fut"] .player-stats {
+  border-color: #c8f3d699
+}
+
+.player-card[data-format="fut"] .card-bottom {
+  color: #d8ffe7
+}
+
+.fut-rarity {
+  position: absolute;
+  top: 44px;
+  right: 30px;
+  padding: 4px 7px;
+  border: 1px solid #baffe0;
+  border-radius: 3px;
+  background: #1b0a46c9;
+  color: #eaffda;
+  font-size: 7px;
+  letter-spacing: 1.3px;
+  box-shadow: 0 0 9px #c450ff99;
+  z-index: 2
+}
+
+.player-card[data-format="fut"] .portrait {
+  filter: saturate(1.2) contrast(1.08);
+}
+
+.player-card[data-format="fut"] .spain-flag {
+  box-shadow: 0 0 7px #c6ffdd
+}
+
+.planeswalker-frame {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 9px;
+  background: radial-gradient(circle at 50% 35%, #e8d49c, #4b6d62 35%, #172b32 75%);
+  color: #17221f;
+  font-family: "Beleren Bold", Georgia, serif
+}
+
+.planeswalker-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  min-height: 31px;
+  padding: 0 5px;
+  background: #d9d7be;
+  border: 1px solid #324f45;
+  border-radius: 6px 6px 0 0;
+  font-size: 13px
+}
+
+.planeswalker-heading b {
+  min-width: 0
+}
+
+.planeswalker-heading .mana {
+  white-space: nowrap;
+  color: #254c46;
+  font: 16px "Segoe UI", sans-serif
+}
+
+.player-card[data-format="mtg"] .planeswalker-type,
+.player-card[data-format="mtg"] .planeswalker-footer {
+  font-family: "Beleren SmallCaps Bold", "Beleren Bold", Georgia, serif
+}
+
+.player-card[data-format="mtg"] .planeswalker-abilities {
+  font-family: "Beleren Bold", Georgia, serif
+}
+
+.planeswalker-frame .tcg-art {
+  flex-basis: 181px;
+  border: 3px solid #d5c275;
+  background: radial-gradient(circle, #e0d38e, transparent 52%), linear-gradient(145deg, #291c43, #2e8373)
+}
+
+.planeswalker-type {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 7px;
+  background: #d9d7be;
+  border: 1px solid #576f56;
+  font-size: 10px;
+  font-weight: bold
+}
+
+.planeswalker-abilities {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  padding: 9px;
+  background: #dddcc5c9;
+  font: 10px/1.3 "Segoe UI", sans-serif
+}
+
+.planeswalker-abilities>span {
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  gap: 5px;
+  align-items: start
+}
+
+.planeswalker-abilities b {
+  font: 18px Georgia, serif;
+  color: #315b4c;
+  text-align: center
+}
+
+.planeswalker-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 27px;
+  font: 6px "Segoe UI", sans-serif;
+  letter-spacing: .5px
+}
+
+.planeswalker-footer b {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #d1c27f;
+  border: 2px solid #6e5f34;
+  font-size: 14px
+}
