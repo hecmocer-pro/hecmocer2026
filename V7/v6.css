@@ -127,6 +127,8 @@
 }
 
 .contact-links .linkedin-label {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
   background: linear-gradient(90deg,
       var(--muted) 0%,
       var(--muted) 40%,
