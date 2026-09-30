@@ -291,13 +291,26 @@
 
   stage.addEventListener('pointerdown', event => {
     if (event.button !== 0 || cardDrag || settling) return;
-    cardDrag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, delta: 0, direction: 0, active: false };
+    cardDrag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, lastY: event.clientY, touch: event.pointerType === 'touch', scrolling: false, delta: 0, direction: 0, active: false };
   });
   stage.addEventListener('pointermove', event => {
     if (!cardDrag || event.pointerId !== cardDrag.id) return;
+    if (cardDrag.scrolling) {
+      window.scrollBy(0, cardDrag.lastY - event.clientY);
+      cardDrag.lastY = event.clientY;
+      return;
+    }
     cardDrag.delta = event.clientX - cardDrag.startX;
     if (!cardDrag.active) {
-      if (Math.abs((event.clientY ?? cardDrag.startY) - cardDrag.startY) > Math.abs(cardDrag.delta) && Math.abs((event.clientY ?? cardDrag.startY) - cardDrag.startY) > 10) { cardDrag = null; return; }
+      if (Math.abs(event.clientY - cardDrag.startY) > Math.abs(cardDrag.delta) && Math.abs(event.clientY - cardDrag.startY) > 10) {
+        if (cardDrag.touch) {
+          cardDrag.scrolling = true;
+          stage.setPointerCapture(event.pointerId);
+          window.scrollBy(0, cardDrag.startY - event.clientY);
+          cardDrag.lastY = event.clientY;
+        } else cardDrag = null;
+        return;
+      }
       if (Math.abs(cardDrag.delta) < 8) return;
       cardDrag.active = true;
       hideHint();

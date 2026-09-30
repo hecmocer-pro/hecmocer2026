@@ -269,7 +269,7 @@ html[lang="en"] .stat-es {
   --card-edge-fade: 0%;
   max-width: 390px;
   margin-inline: auto;
-  touch-action: pan-y;
+  touch-action: none;
   user-select: none;
   overflow: clip;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--card-edge-fade), #000 calc(100% - var(--card-edge-fade)), transparent);
