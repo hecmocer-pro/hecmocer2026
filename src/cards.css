@@ -1,7 +1,7 @@
 /* V4 card artwork. Shared assets remain untouched. */
 @font-face {
   font-family: "Beleren Bold";
-  src: url('assets/fonts/beleren/Beleren2016-Bold.woff') format('woff');
+  src: url('../assets/fonts/beleren/Beleren2016-Bold.woff') format('woff');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Beleren SmallCaps Bold";
-  src: url('assets/fonts/beleren/Beleren2016SmallCaps-Bold.woff') format('woff');
+  src: url('../assets/fonts/beleren/Beleren2016SmallCaps-Bold.woff') format('woff');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "D-DIN";
-  src: url('assets/fonts/d-din/D-DIN.otf') format('opentype');
+  src: url('../assets/fonts/d-din/D-DIN.otf') format('opentype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: "D-DIN";
-  src: url('assets/fonts/d-din/D-DIN-Bold.otf') format('opentype');
+  src: url('../assets/fonts/d-din/D-DIN-Bold.otf') format('opentype');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -491,7 +491,7 @@
   content: "";
   position: absolute;
   inset: -5px;
-  background: url('assets/pkm-background-v7.webp') center / cover;
+  background: url('../assets/pkm-background-v7.webp') center / cover;
   filter: blur(2px) sepia(0.6) saturate(2) hue-rotate(345deg);
   transform: scale(1.04);
 }

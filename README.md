@@ -13,4 +13,4 @@ python -m http.server 8127 --directory dist
 
 Abre `http://localhost:8127/`.
 
-Los archivos de la página están en la raíz del repositorio. `build.mjs` copia los archivos de la página y exclusivamente los recursos que usa el sitio desde `assets/` y `AI inspiration/`. Las licencias de las fuentes incluidas se conservan junto a sus archivos.
+Los archivos HTML, CSS y JavaScript de la página están en `src/`. `build.mjs` los publica en `dist/` y copia exclusivamente los recursos que usa el sitio desde `assets/` y `AI inspiration/`. Las licencias de las fuentes incluidas se conservan junto a sus archivos.

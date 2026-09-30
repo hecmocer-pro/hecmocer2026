@@ -1,9 +1,9 @@
 // Let the first card finish loading before fetching artwork for the other formats.
 (() => {
   const images = {
-    mtg: ['assets/mtg-background-v7.webp', 'AI inspiration/W.svg', 'AI inspiration/U.svg', 'AI inspiration/R.svg', 'AI inspiration/G.svg'],
-    pokemon: ['assets/pkm-background-v7.webp', 'assets/pkm-electric.png', 'assets/pkm-dragon.png', 'assets/pkm-normal.webp'],
-    hearthstone: ['assets/hearthstone-background.avif', 'AI inspiration/hearthstone-card-2.png'],
+    mtg: ['../assets/mtg-background-v7.webp', '../AI inspiration/W.svg', '../AI inspiration/U.svg', '../AI inspiration/R.svg', '../AI inspiration/G.svg'],
+    pokemon: ['../assets/pkm-background-v7.webp', '../assets/pkm-electric.png', '../assets/pkm-dragon.png', '../assets/pkm-normal.webp'],
+    hearthstone: ['../assets/hearthstone-background.avif', '../AI inspiration/hearthstone-card-2.png'],
   };
   const fonts = {
     mtg: ['700 16px "Beleren Bold"', '700 16px "Beleren SmallCaps Bold"'],
