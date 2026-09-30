@@ -16,6 +16,15 @@
   front.innerHTML = fut;
   const pokemonPortrait = '<span class="tcg-art"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>';
   const mtgPortrait = '<span class="tcg-art"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>';
+  const pokerKing = (suit, name, position) => `<span class="poker-card poker-card-${position}" aria-hidden="true">
+    <span class="poker-index"><b>K</b><span>${suit}</span></span>
+    <span class="poker-index poker-index-bottom"><b>K</b><span>${suit}</span></span>
+    <span class="poker-court">
+      <span class="poker-half"><span class="poker-crown">♛</span><img src="../assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">${suit}</span></span>
+      <span class="poker-half poker-reflection"><span class="poker-crown">♛</span><img src="../assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">${suit}</span></span>
+      <span class="poker-ribbon">REY DE CÓDIGO</span>
+    </span>
+  </span>`;
   const formats = {
     fut: { name: 'FUT · Legendaria', markup: fut },
     mtg: {
@@ -57,15 +66,12 @@
       </span>`
     },
     poker: {
-      name: 'Póker · Rey de corazones',
+      name: 'Póker · Cuatro reyes',
       markup: `<span class="poker-frame">
-        <span class="poker-index"><b>K</b><span>♥</span></span>
-        <span class="poker-index poker-index-bottom" aria-hidden="true"><b>K</b><span>♥</span></span>
-        <span class="poker-court">
-          <span class="poker-half"><span class="poker-crown" aria-hidden="true">♛</span><img src="../assets/profile-v7.webp" alt="Retrato del rey de corazones" decoding="async" /><span class="poker-suit" aria-hidden="true">♥</span></span>
-          <span class="poker-half poker-reflection" aria-hidden="true"><span class="poker-crown">♛</span><img src="../assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">♥</span></span>
-          <span class="poker-ribbon">REY DE CÓDIGO</span>
-        </span>
+        ${pokerKing('♣', 'tréboles', 'clubs')}
+        ${pokerKing('♠', 'picas', 'spades')}
+        ${pokerKing('♦', 'diamantes', 'diamonds')}
+        ${pokerKing('♥', 'corazones', 'hearts')}
       </span>`
     },
     balatro: {
@@ -155,7 +161,7 @@
   function updateCard(value) {
     card.dataset.format = value;
     front.innerHTML = formats[value].markup;
-    card.setAttribute('aria-label', value === 'poker' ? 'Carta de póker · Rey de corazones' : `Carta de perfil de Héctor Moreno Cervera · ${formats[value].name}`);
+    card.setAttribute('aria-label', value === 'poker' ? 'Mano de póker · cuatro reyes de tréboles, picas, diamantes y corazones; corazones delante' : `Carta de perfil de Héctor Moreno Cervera · ${formats[value].name}`);
     if (status) status.textContent = `${formats[value].name} · Edición personal`;
     document.dispatchEvent(new Event('cardformatchange'));
   }
