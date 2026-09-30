@@ -1112,3 +1112,9 @@ body.v5 {
     height:405px;
   }
 }
+img,
+.card-stage canvas {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

@@ -21,3 +21,10 @@ window.addEventListener("blur", resetTilt);
 reduceMotion.addEventListener("change", resetTilt);
 mobileLayout.addEventListener("change", resetTilt);
 document.addEventListener("visibilitychange", () => { if (document.hidden) resetTilt(); });
+
+document.addEventListener("contextmenu", event => {
+  if (!window.matchMedia("(pointer: coarse)").matches) return;
+  if (event.target instanceof HTMLImageElement || event.target.matches?.(".card-stage canvas")) {
+    event.preventDefault();
+  }
+});

@@ -862,19 +862,61 @@
   padding-top: 48px;
 }
 
-/* Poker: mirrored court portrait and diagonally opposed indices. */
+/* Poker: four kings fanned into one hand, with hearts in front. */
 .player-card[data-format="poker"] {
   --tcg-edge: #e8e3d7;
   --tcg-paper: #fffcf2;
   --tcg-accent: #d0bd8f;
 }
 
+.player-card[data-format="poker"] .card-face {
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+
 .poker-frame {
   display: block;
   position: relative;
+  left: -35px;
+  width: 390px;
   height: 100%;
+}
+
+.poker-card {
+  display: block;
+  position: absolute;
+  width: 225px;
+  height: 315px;
+  border: 5px solid #e8e3d7;
+  border-radius: 12px;
   background: #fffcf2;
   color: #232c36;
+  overflow: hidden;
+  box-shadow: 0 8px 14px #09090c55, inset 0 0 0 1px #d9d0bb;
+  transform-origin: center;
+}
+
+.poker-card-clubs { top: 48px; left: 28px; transform: rotate(-10deg); z-index: 1; }
+.poker-card-spades { top: 55px; left: 64px; transform: rotate(-3deg); z-index: 2; }
+.poker-card-diamonds { top: 65px; left: 100px; transform: rotate(3deg); z-index: 3; }
+.poker-card-hearts { top: 85px; left: 137px; transform: rotate(10deg); z-index: 4; }
+
+.poker-card-diamonds,
+.poker-card-hearts { color: #b72839; }
+
+.poker-card-clubs,
+.poker-card-spades { --poker-grid-color: #232c36; }
+
+.poker-card-hearts { box-shadow: 0 12px 20px #09090c77, inset 0 0 0 1px #d9d0bb; }
+
+.poker-card::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid #cbbd9e;
+  border-radius: 6px;
+  pointer-events: none;
 }
 
 .poker-index {
@@ -884,8 +926,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font: 30px/1 Georgia, serif;
-  color: #b72839;
+  font: 25px/1 Georgia, serif;
+  color: inherit;
 }
 
 .poker-index b {
@@ -893,7 +935,7 @@
 }
 
 .poker-index>span {
-  font-size: 32px;
+  font-size: 25px;
 }
 
 .poker-index-bottom {
@@ -906,10 +948,10 @@
 
 .poker-court {
   position: absolute;
-  top: 39px;
-  bottom: 39px;
-  left: 44px;
-  right: 44px;
+  top: 40px;
+  bottom: 40px;
+  left: 33px;
+  right: 33px;
   border: 2px solid #b59b60;
   outline: 1px solid #b59b60;
   outline-offset: 4px;
@@ -921,7 +963,28 @@
   position: relative;
   height: 50%;
   overflow: hidden;
-  background: repeating-conic-gradient(#64313d 0% 25%, #dbc58e 0% 50%) 0 0 / 28px 28px;
+  background: repeating-conic-gradient(var(--poker-grid-color, #64313d) 0% 25%, #dbc58e 0% 50%) 0 0 / 28px 28px;
+}
+
+.poker-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  padding: 14px;
+  background: repeating-conic-gradient(var(--poker-grid-color, #64313d) 0% 25%, #dbc58e 0% 50%) 0 0 / 28px 28px;
+  color: #232c36;
+  text-align: center;
+  font: bold 14px/1.35 Georgia, serif;
+  text-wrap: balance;
+}
+
+.poker-message > span {
+  padding: 12px 10px;
+  background: #fffcf2ed;
+  border: 1px solid #b59b60;
+  border-radius: 4px;
 }
 
 .poker-half img {
@@ -942,7 +1005,7 @@
   position: absolute;
   top: 0;
   right: 5px;
-  font-size: 37px;
+  font-size: 30px;
   color: #f4ce67;
   z-index: 1;
   text-shadow: 1px 2px #23303c;
@@ -952,8 +1015,8 @@
   position: absolute;
   bottom: 8px;
   left: 8px;
-  color: #ffb0b8;
-  font-size: 28px;
+  color: #fff1d8;
+  font-size: 25px;
   text-shadow: 1px 1px #642732;
 }
 
@@ -968,8 +1031,8 @@
   border-block: 2px solid #d5ba76;
   color: #fff3ca;
   text-align: center;
-  font: bold 11px Georgia, serif;
-  letter-spacing: 1.6px;
+  font: bold 9px Georgia, serif;
+  letter-spacing: 1px;
 }
 
 .poker-caption {
@@ -982,6 +1045,10 @@
 
 .player-card[data-format="poker"] .back-inner {
   background: linear-gradient(#fffcf2ee, #fffcf2ee), repeating-conic-gradient(#642f3b 0% 25%, #d5ba76 0% 50%) 0 0 / 16px 16px;
+}
+
+@media (min-width: 351px) and (max-width: 365px) {
+  .poker-frame { transform: scale(.95); transform-origin: center; }
 }
 
 /* Balatro: a code-drawn pixel joker, paper stock and arcade scoring. */

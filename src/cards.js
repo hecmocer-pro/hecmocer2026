@@ -16,13 +16,21 @@
   front.innerHTML = fut;
   const pokemonPortrait = '<span class="tcg-art"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>';
   const mtgPortrait = '<span class="tcg-art"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>';
-  const pokerKing = (suit, name, position) => `<span class="poker-card poker-card-${position}" aria-hidden="true">
+  const pokerMessages = {
+    clubs: 'escribeme en mis redes sociales y charlamos',
+    spades: 'si lees esto, me gustas. A no ser que te lo haya chivado una IA, eso resta puntos',
+    diamonds: 'no deberías de estar viendo esto'
+  };
+  const pokerSuitNames = { clubs: 'tréboles', spades: 'picas', diamonds: 'diamantes', hearts: 'corazones' };
+  const pokerKing = (suit, position) => `<span class="poker-card poker-card-${position}" role="img" aria-label="Rey de ${pokerSuitNames[position]}${pokerMessages[position] ? `: ${pokerMessages[position]}` : ''}">
     <span class="poker-index"><b>K</b><span>${suit}</span></span>
     <span class="poker-index poker-index-bottom"><b>K</b><span>${suit}</span></span>
     <span class="poker-court">
-      <span class="poker-half"><span class="poker-crown">♛</span><img src="../assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">${suit}</span></span>
-      <span class="poker-half poker-reflection"><span class="poker-crown">♛</span><img src="../assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">${suit}</span></span>
-      <span class="poker-ribbon">REY DE CÓDIGO</span>
+      ${pokerMessages[position]
+        ? `<span class="poker-message"><span>${pokerMessages[position]}</span></span>`
+        : `<span class="poker-half"><span class="poker-crown">♛</span><img src="../assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">${suit}</span></span>
+           <span class="poker-half poker-reflection"><span class="poker-crown">♛</span><img src="../assets/profile-v7.webp" alt="" decoding="async" /><span class="poker-suit">${suit}</span></span>
+           <span class="poker-ribbon">REY DE CÓDIGO</span>`}
     </span>
   </span>`;
   const formats = {
@@ -68,10 +76,10 @@
     poker: {
       name: 'Póker · Cuatro reyes',
       markup: `<span class="poker-frame">
-        ${pokerKing('♣', 'tréboles', 'clubs')}
-        ${pokerKing('♠', 'picas', 'spades')}
-        ${pokerKing('♦', 'diamantes', 'diamonds')}
-        ${pokerKing('♥', 'corazones', 'hearts')}
+        ${pokerKing('♣', 'clubs')}
+        ${pokerKing('♠', 'spades')}
+        ${pokerKing('♦', 'diamonds')}
+        ${pokerKing('♥', 'hearts')}
       </span>`
     },
     balatro: {

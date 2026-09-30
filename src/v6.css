@@ -245,12 +245,26 @@ html[lang="en"] .stat-es {
   .card-selector-indicator { transition: none; }
 }
 
+@property --card-edge-fade {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
 .collection-v5 .card-stage {
+  --card-edge-fade: 0%;
   max-width: 390px;
   margin-inline: auto;
   touch-action: pan-y;
   user-select: none;
   overflow: clip;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--card-edge-fade), #000 calc(100% - var(--card-edge-fade)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--card-edge-fade), #000 calc(100% - var(--card-edge-fade)), transparent);
+  transition: --card-edge-fade .2s ease-out;
+}
+
+.collection-v5 .card-stage:has(.card-transition.is-dragging, .card-transition.is-settling) {
+  --card-edge-fade: 8%;
 }
 
 .collection-v5 .card-stage img {
@@ -810,6 +824,7 @@ html[lang="en"] .stat-es {
 .joker-popup {
   position: absolute;
   z-index: 10;
+  pointer-events: none;
   left: 0;
   bottom: calc(100% + 12px);
   width: 100%;
