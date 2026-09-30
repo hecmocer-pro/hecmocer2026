@@ -108,6 +108,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   width: 100%;
   margin-top: 4px;
 }
@@ -126,7 +127,7 @@
   color: var(--accent);
 }
 
-.contact-links .linkedin-label {
+.contact-links .contact-label {
   border-bottom: 1px solid currentColor;
   background: linear-gradient(90deg,
       var(--muted) 0%,
@@ -139,17 +140,21 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: linkedin-shimmer 7s ease-in-out infinite;
+  animation: contact-shimmer 7s ease-in-out infinite;
 }
 
-.contact-links a:hover .linkedin-label,
-.contact-links a:focus-visible .linkedin-label {
+.contact-links a:nth-child(2) .contact-label {
+  animation-delay: -3.5s;
+}
+
+.contact-links a:hover .contact-label,
+.contact-links a:focus-visible .contact-label {
   animation: none;
   background: none;
   -webkit-text-fill-color: currentColor;
 }
 
-@keyframes linkedin-shimmer {
+@keyframes contact-shimmer {
 
   0%,
   20% {
@@ -163,7 +168,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-links .linkedin-label {
+  .contact-links .contact-label {
     animation: none;
     background: none;
     -webkit-text-fill-color: currentColor;
