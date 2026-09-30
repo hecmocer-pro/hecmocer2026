@@ -1042,14 +1042,22 @@ html[lang="en"] .stat-es {
 }
 
 .js.intro-card-visible .card-stage {
-  animation: first-card-arrival .7s cubic-bezier(.18, .8, .25, 1) backwards;
+  animation: first-card-arrival .7s cubic-bezier(.2, .75, .3, 1) backwards;
 }
 
 .js.intro-complete .card-selector,
 .js.intro-complete .projects-toggle,
 .js.intro-complete .utility-nav {
-  animation: first-controls-arrival .55s ease-out both;
+  animation: first-controls-arrival .55s cubic-bezier(.2, .75, .3, 1) both;
+}
+
+.js.intro-complete .card-selector,
+.js.intro-complete .projects-toggle {
   animation-delay: .3s;
+}
+
+.js.intro-complete .utility-nav {
+  animation-delay: .95s;
 }
 
 @keyframes subtitle-drop {
@@ -1067,19 +1075,19 @@ html[lang="en"] .stat-es {
 @keyframes first-card-arrival {
   from {
     opacity: 0;
-    transform: translateY(42px) scale(.92);
+    transform: translateY(-42px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
 @keyframes first-controls-arrival {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(-22px);
   }
 
   to {
