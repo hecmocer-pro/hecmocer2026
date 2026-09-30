@@ -185,6 +185,7 @@
   }
 
   function showPreview(index, direction) {
+    window.cardAssetPreload?.(buttons[index].dataset.format);
     previewCard?.remove();
     previewCard = card.cloneNode(true);
     previewCard.removeAttribute('id');
@@ -255,7 +256,11 @@
     settle(index, -direction * slideDistance());
   }
 
-  buttons.forEach((button, index) => button.addEventListener('click', () => selectFormat(index)));
+  buttons.forEach((button, index) => {
+    button.addEventListener('pointerenter', () => window.cardAssetPreload?.(button.dataset.format));
+    button.addEventListener('focus', () => window.cardAssetPreload?.(button.dataset.format));
+    button.addEventListener('click', () => selectFormat(index));
+  });
   stage.addEventListener('dragstart', event => event.preventDefault());
   selector.addEventListener('click', event => {
     if (!suppressClick) return;
