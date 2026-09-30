@@ -128,7 +128,6 @@
 
 .contact-links .linkedin-label {
   border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
   background: linear-gradient(90deg,
       var(--muted) 0%,
       var(--muted) 40%,
@@ -151,8 +150,16 @@
 }
 
 @keyframes linkedin-shimmer {
-  0%, 20% { background-position: 100% 0; }
-  48%, 100% { background-position: 0 0; }
+
+  0%,
+  20% {
+    background-position: 100% 0;
+  }
+
+  48%,
+  100% {
+    background-position: 0 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -242,7 +249,9 @@ html[lang="en"] .stat-es {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-selector-indicator { transition: none; }
+  .card-selector-indicator {
+    transition: none;
+  }
 }
 
 @property --card-edge-fade {
@@ -349,20 +358,50 @@ html[lang="en"] .stat-es {
 }
 
 @media(max-width:580px) {
-  .collection-v5 .card-stage { order: 1; }
-  .collection-v5 .swipe-hint { order: 2; }
-  .collection-v5 .card-selector { order: 3; }
-  .collection-v5 .joker-details-slot { order: 4; }
-  .collection-v5 .card-stage { perspective: none; }
-  .collection-v5 .player-card:not(.swipe-preview) { transform: none !important; transition: none; }
-  .card-transition.is-settling>.player-card:not(.swipe-preview) { transition: opacity .3s ease-out; }
-  .collection-v5 .card-float { animation: none; }
+  .collection-v5 .card-stage {
+    order: 1;
+  }
+
+  .collection-v5 .swipe-hint {
+    order: 2;
+  }
+
+  .collection-v5 .card-selector {
+    order: 3;
+  }
+
+  .collection-v5 .joker-details-slot {
+    order: 4;
+  }
+
+  .collection-v5 .card-stage {
+    perspective: none;
+  }
+
+  .collection-v5 .player-card:not(.swipe-preview) {
+    transform: none !important;
+    transition: none;
+  }
+
+  .card-transition.is-settling>.player-card:not(.swipe-preview) {
+    transition: opacity .3s ease-out;
+  }
+
+  .collection-v5 .card-float {
+    animation: none;
+  }
+
   .card-transition.is-dragging,
-  .card-transition.is-settling { will-change: transform; }
+  .card-transition.is-settling {
+    will-change: transform;
+  }
+
   .card-transition.is-dragging>.player-card,
   .card-transition.is-dragging>.swipe-preview,
   .card-transition.is-settling>.player-card,
-  .card-transition.is-settling>.swipe-preview { will-change: opacity; }
+  .card-transition.is-settling>.swipe-preview {
+    will-change: opacity;
+  }
 }
 
 @media(max-width:350px) {
@@ -838,8 +877,11 @@ html[lang="en"] .stat-es {
 }
 
 @media(max-width:580px) {
+
   /* Clear the 54px selector, 20px gap, and 12px of breathing room. */
-  .joker-popup { bottom: calc(100% + 86px); }
+  .joker-popup {
+    bottom: calc(100% + 86px);
+  }
 }
 
 .joker-details:not([hidden]) .joker-popup {
