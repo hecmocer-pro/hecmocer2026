@@ -1,4 +1,4 @@
-// Keep the accessible heading stable while the visual name is edited.
+// Animate the visible heading while its accessible name stays stable.
 (() => {
   const before = document.querySelector('#nameBefore');
   const accent = document.querySelector('#nameAccent');

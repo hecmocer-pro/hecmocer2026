@@ -2,7 +2,7 @@ import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
 const output = join(import.meta.dirname, 'dist');
-const pages = ['index.html', 'bootstrap.js', 'cards.css', 'styles.css', 'v6.css', 'script.js', 'asset-preload.js', 'cards.js', 'v6.js', 'preferences.js'];
+const pages = ['index.html', 'bootstrap.js', 'cards.css', 'styles.css', 'visual-effects.css', 'card-tilt.js', 'asset-preload.js', 'cards.js', 'visual-effects.js', 'preferences.js'];
 const assets = [
   'assets/h-logo-circle.png',
   'assets/profile-v7.webp',

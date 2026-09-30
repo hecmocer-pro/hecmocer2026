@@ -337,6 +337,7 @@
   }
   stage.addEventListener('pointerup', event => endCardDrag(event));
   stage.addEventListener('pointercancel', event => endCardDrag(event, true));
+  stage.addEventListener('lostpointercapture', event => endCardDrag(event, true));
 
   selector.addEventListener('pointerdown', event => {
     if (event.button !== 0 || selectorDrag) return;
@@ -372,6 +373,7 @@
   }
   selector.addEventListener('pointerup', event => endSelectorDrag(event));
   selector.addEventListener('pointercancel', event => endSelectorDrag(event, true));
+  selector.addEventListener('lostpointercapture', event => endSelectorDrag(event, true));
   window.addEventListener('resize', () => {
     buttonGeometry = undefined;
     stageWidth = undefined;

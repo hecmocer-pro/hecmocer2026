@@ -67,24 +67,47 @@
     'Portfolio personal de Héctor Moreno Cervera.': 'Personal portfolio of Héctor Moreno Cervera.'
   }));
   const reverse = new Map([...translations].map(([es, en]) => [en, es]));
+  const originalText = new WeakMap();
+  const originalAttributes = new WeakMap();
+  const escapePattern = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const createReplacer = entries => {
+    const lookup = new Map(entries);
+    const pattern = new RegExp([...lookup.keys()]
+      .sort((a, b) => b.length - a.length)
+      .map(key => key === 'Contact' ? '\\bContact\\b' : escapePattern(key))
+      .join('|'), 'g');
+    return value => value.replace(pattern, match => lookup.get(match));
+  };
+  const replaceSpanish = createReplacer(reverse);
+  const replaceEnglish = createReplacer(translations);
   const replace = (value, language) => {
-    const entries = [...(language === 'en' ? translations : reverse)].sort((a, b) => b[0].length - a[0].length);
-    for (const [from, to] of entries) {
-      value = from === 'Contact' ? value.replace(/\bContact\b/g, to) : value.replaceAll(from, to);
-    }
-    return value;
+    return language === 'en' ? replaceEnglish(value) : replaceSpanish(value);
   };
   function translateTree(container, language) {
     const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
     let node;
     while ((node = walker.nextNode())) {
       if (node.parentElement?.closest('#animatedName, #animatedSubtitle, .project-list')) continue;
-      const value = replace(node.nodeValue, language);
+      const previous = originalText.get(node);
+      const source = previous && node.nodeValue === previous.rendered ? previous.source : node.nodeValue;
+      const value = replace(source, language);
+      originalText.set(node, { source, rendered: value });
       if (value !== node.nodeValue) node.nodeValue = value;
     }
     for (const element of [container, ...container.querySelectorAll('[aria-label], [title], [content]')]) {
+      let attributes = originalAttributes.get(element);
+      if (!attributes) {
+        attributes = new Map();
+        originalAttributes.set(element, attributes);
+      }
       for (const attr of ['aria-label', 'title', 'content']) {
-        if (element.hasAttribute?.(attr)) element.setAttribute(attr, replace(element.getAttribute(attr), language));
+        if (!element.hasAttribute?.(attr)) continue;
+        const current = element.getAttribute(attr);
+        const previous = attributes.get(attr);
+        const source = previous && current === previous.rendered ? previous.source : current;
+        const value = replace(source, language);
+        attributes.set(attr, { source, rendered: value });
+        if (value !== current) element.setAttribute(attr, value);
       }
     }
   }
@@ -99,7 +122,7 @@
     document.querySelectorAll('.language-switcher button').forEach(button => {
       const active = button.dataset.language === language;
       button.classList.toggle('is-active', active);
-      if (active) button.setAttribute('aria-current', 'true'); else button.removeAttribute('aria-current');
+      button.setAttribute('aria-pressed', String(active));
     });
     document.dispatchEvent(new CustomEvent('portfolio-language-change', { detail: { language } }));
   }

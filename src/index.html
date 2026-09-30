@@ -19,11 +19,11 @@
   <link rel="preload" as="image" href="../assets/profile-v7.webp" fetchpriority="high" />
   <link rel="stylesheet" href="cards.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="v6.css" />
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="visual-effects.css" />
+  <script src="card-tilt.js" defer></script>
   <script src="asset-preload.js" defer></script>
   <script src="cards.js" defer></script>
-  <script src="v6.js" defer></script>
+  <script src="visual-effects.js" defer></script>
   <script src="preferences.js" defer></script>
 </head>
 
@@ -33,9 +33,9 @@
   <main id="inicio" class="v5-shell">
     <nav class="utility-nav" aria-label="Preferencias">
       <div class="language-switcher" aria-label="Idioma">
-        <button type="button" aria-label="Cambiar a inglés">EN</button>
+        <button type="button" aria-label="Cambiar a inglés" aria-pressed="false">EN</button>
         <span aria-hidden="true">/</span>
-        <button type="button" class="is-active" aria-label="Cambiar a español" aria-current="page">ES</button>
+        <button type="button" class="is-active" aria-label="Cambiar a español" aria-pressed="true">ES</button>
       </div>
     </nav>
     <section class="hero-v5" aria-labelledby="hero-title">

@@ -1,4 +1,4 @@
-/* V6: viewport-sized composition with room for touch targets and card motion. */
+/* Viewport composition, card motion, and visual effects. */
 @font-face {
   font-family: Balatro;
   src: url('../assets/fonts/beleren/balatro.otf.woff2') format('woff2');
