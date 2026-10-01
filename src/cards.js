@@ -1,12 +1,12 @@
 // V7 collection: six formats, presented as a single, non-flippable profile card.
 (() => {
-  const card = document.querySelector('#profileCard');
+  let card = document.querySelector('#profileCard');
   const selector = document.querySelector('#cardSelector');
   const buttons = [...selector.querySelectorAll('button[data-format]')];
   const indicator = selector.querySelector('.card-selector-indicator');
   const stage = document.querySelector('.card-stage');
   const transition = card.closest('.card-transition');
-  const front = card.querySelector('.card-front');
+  let front = card.querySelector('.card-front');
   const currentYear = new Date().getFullYear();
   const cardNumber = String(currentYear - 1994).padStart(3, '0');
   const fut = front.innerHTML.replace(/<(span|b) data-year-base="(\d+)">[^<]*<\/\1>/g, (_, tag, base) => {
@@ -38,7 +38,7 @@
     mtg: {
       name: 'Magic: The Gathering',
       markup: `<span class="planeswalker-frame">
-        <span class="planeswalker-heading"><b>Héctor, Team Lead</b><span class="mana" role="img" aria-label="Coste: un maná blanco, uno azul, uno rojo y uno verde"><img src="../AI inspiration/W.svg" alt="" title="Llanura" /><img src="../AI inspiration/U.svg" alt="" title="Isla" /><img src="../AI inspiration/R.svg" alt="" title="Montaña" /><img src="../AI inspiration/G.svg" alt="" title="Bosque" /></span></span>
+        <span class="planeswalker-heading"><b>Héctor, Team Lead</b><span class="mana" role="img" aria-label="Coste: un maná blanco, uno azul, uno rojo y uno verde"><img src="../AI inspiration/W.svg" alt="" title="Llanura" decoding="sync" /><img src="../AI inspiration/U.svg" alt="" title="Isla" decoding="sync" /><img src="../AI inspiration/R.svg" alt="" title="Montaña" decoding="sync" /><img src="../AI inspiration/G.svg" alt="" title="Bosque" decoding="sync" /></span></span>
         ${mtgPortrait}
         <span class="planeswalker-type">Planeswalker Legendario — Developer <span>◆</span></span>
         <span class="planeswalker-abilities"><span><b><span>+1</span></b><span>Crea una ficha de idea. Tus aliados obtienen +1/+1 hasta el final del turno.</span></span><span><b><span>−2</span></b><span>Convierte una idea en un proyecto y roba una carta.</span></span><span><b><span>−7</span></b><span>Obtienes un emblema con «Al principio del turno, roba una carta por cada idea que controles».</span></span></span>
@@ -59,9 +59,9 @@
     },
     hearthstone: {
       name: 'Hearthstone',
-      markup: `<span class="hs-frame"><img class="hs-overlay" src="../AI inspiration/hearthstone-card-2.png" alt="" decoding="async" />
+      markup: `<span class="hs-frame"><img class="hs-overlay" src="../AI inspiration/hearthstone-card-2.png" alt="" decoding="sync" />
         <span class="hs-mana" aria-label="Coste de maná: 6">6</span>
-        <span class="hs-portrait"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="async" /></span>
+        <span class="hs-portrait"><img src="../assets/profile-v7.webp" alt="Héctor Moreno Cervera" decoding="sync" /></span>
         <svg class="hs-name" viewBox="0 0 320 449" aria-label="Héctor, Team Lead" role="img">
           <defs><path id="hs-name-curve" d="M 48,268 C 116,257 195,240 263,257" /></defs>
           <text><textPath href="#hs-name-curve" startOffset="50%" text-anchor="middle">Héctor, Team Lead</textPath></text>
@@ -166,19 +166,42 @@
     moveIndicator(index);
   }
 
-  function updateCard(value) {
-    card.dataset.format = value;
-    front.innerHTML = formats[value].markup;
+  function announceCard(value) {
     card.setAttribute('aria-label', value === 'poker' ? 'Mano de póker · cuatro reyes de tréboles, picas, diamantes y corazones; corazones delante' : `Carta de perfil de Héctor Moreno Cervera · ${formats[value].name}`);
     if (status) status.textContent = `${formats[value].name} · Edición personal`;
     document.dispatchEvent(new Event('cardformatchange'));
+  }
+
+  function updateCard(value) {
+    card.dataset.format = value;
+    front.innerHTML = formats[value].markup;
+    announceCard(value);
+  }
+
+  function promotePreview(value) {
+    // Keep the already painted images and SVGs instead of recreating them at
+    // the end of the slide. WebKit can show a blank frame while decoding them.
+    const nextCard = previewCard;
+    nextCard.classList.remove('swipe-preview');
+    nextCard.removeAttribute('inert');
+    nextCard.removeAttribute('aria-hidden');
+    nextCard.setAttribute('id', 'profileCard');
+    nextCard.setAttribute('role', 'img');
+    nextCard.style.opacity = '';
+    card.replaceWith(nextCard);
+    card = nextCard;
+    front = card.querySelector('.card-front');
+    previewCard = null;
+    announceCard(value);
   }
 
   function finishTransition() {
     window.clearTimeout(exitTimer);
     const wasTransitioning = Boolean(previewCard || settling);
     if (pendingIndex !== null && card.dataset.format !== buttons[pendingIndex].dataset.format) {
-      updateCard(buttons[pendingIndex].dataset.format);
+      const value = buttons[pendingIndex].dataset.format;
+      if (previewCard?.dataset.format === value) promotePreview(value);
+      else updateCard(value);
     }
     previewCard?.remove();
     previewCard = null;
@@ -256,7 +279,11 @@
     stage.classList.remove('is-card-dragging');
     selector.classList.remove('is-dragging');
     finishTransition();
-    if (!animate || reducedMotion.matches || previousIndex === index) {
+    if (animate && previousIndex === index) {
+      moveIndicator(index);
+      return;
+    }
+    if (!animate || reducedMotion.matches) {
       setSelected(index);
       updateCard(value);
       return;
