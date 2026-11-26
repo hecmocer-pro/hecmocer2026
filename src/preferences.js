@@ -9,6 +9,7 @@
   };
   const translations = new Map(Object.entries({
     'Saltar al contenido': 'Skip to content', 'Preferencias': 'Preferences',
+    'Proyectos': 'Projects', 'Contacto y proyectos': 'Contact and projects',
     'Versión': 'Version', 'Seleccionar versión': 'Select version',
     'Idioma': 'Language', 'Cambiar a inglés': 'Switch to English', 'Cambiar a español': 'Switch to Spanish',
     'Tema': 'Theme', 'Tema claro': 'Light theme', 'Tema oscuro': 'Dark theme',
