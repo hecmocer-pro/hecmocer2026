@@ -1,3 +1,4 @@
+import { once } from 'node:events';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { extname, join } from 'node:path';
@@ -48,6 +49,18 @@ const server = createServer(async (request, response) => {
   }
 });
 
-server.listen(Number(process.env.PORT ?? 5173), 'localhost', () => {
-  console.log(`Portfolio disponible en http://localhost:${server.address().port}/`);
-});
+const firstPort = Number(process.env.PORT ?? 8000);
+if (!Number.isInteger(firstPort) || firstPort < 0 || firstPort > 65535) {
+  throw new Error('PORT debe ser un entero entre 0 y 65535');
+}
+
+for (let port = firstPort; port <= 65535; port += 1) {
+  try {
+    await once(server.listen(port, 'localhost'), 'listening');
+    break;
+  } catch (error) {
+    if (error.code !== 'EADDRINUSE' || port === 65535) throw error;
+  }
+}
+
+console.log(`Portfolio disponible en http://localhost:${server.address().port}/`);
