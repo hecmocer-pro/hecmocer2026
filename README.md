@@ -4,14 +4,13 @@ Código fuente de la versión pública V7 del portfolio.
 
 El sitio es estático y no necesita instalar dependencias. Vercel ejecuta `node build.mjs` y sirve `dist/`, con la página principal en `/`.
 
-Para probar el resultado localmente:
+Para arrancar el servidor de desarrollo con Node.js 22:
 
 ```sh
-node build.mjs
-python -m http.server 8127 --directory dist
+npm run dev
 ```
 
-Abre `http://localhost:8127/`.
+Abre `http://localhost:5173/` para ver el portfolio o `http://localhost:5173/projects` para consultar los proyectos. Recarga la página tras editar los archivos. Ejecuta `npm run build` para generar la versión de producción.
 
 Los archivos HTML, CSS y JavaScript de la página están en `src/`. `build.mjs` los publica en `dist/` y copia exclusivamente los recursos que usa el sitio desde `assets/` y `AI inspiration/`. Las licencias de las fuentes incluidas se conservan junto a sus archivos.
 

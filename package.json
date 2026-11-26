@@ -1,0 +1,8 @@
+{
+  "name": "hecmocer2026",
+  "private": true,
+  "scripts": {
+    "dev": "node --watch dev.mjs",
+    "build": "node build.mjs"
+  }
+}
